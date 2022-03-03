@@ -271,6 +271,17 @@ Use the pick up time for your calculations.
 
 (note: it's not a typo, it's "tip", not "trip")
 
+```
+SELECT * 
+FROM yellow_taxi_trips
+WHERE tip_amount = (SELECT max(tip_amount)
+FROM yellow_taxi_trips
+WHERE tpep_pickup_datetime >= '2021-01-01 00:00:00'
+AND tpep_pickup_datetime < '2021-02-01 00:00:00')
+```
+
+**2021-01-20**
+
 
 ## Question 5. Most popular destination
 
