@@ -253,6 +253,13 @@ Download this data and put it to Postgres
 How many taxi trips were there on January 15?
 
 Consider only trips that started on January 15.
+```
+SELECT count(*) 
+FROM yellow_taxi_trips 
+WHERE tpep_pickup_datetime >= '2021-01-15 00:00:00' 
+AND tpep_pickup_datetime < '2021-01-16 00:00:00'
+```
+**53024**
 
 
 ## Question 4. Largest tip for each day
