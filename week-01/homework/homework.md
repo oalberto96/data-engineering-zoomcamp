@@ -292,6 +292,21 @@ Use the pick up time for your calculations.
 
 Enter the zone name (not id). If the zone name is unknown (missing), write "Unknown" 
 
+```
+SELECT COUNT(zones_do."Zone") as total, zones_do."Zone"
+FROM yellow_taxi_trips trips
+LEFT JOIN yellow_taxi_zones zones_up ON trips."PULocationID" = zones_up."LocationID"
+LEFT JOIN yellow_taxi_zones zones_do ON trips."DOLocationID" = zones_do."LocationID"
+WHERE tpep_pickup_datetime >= '2021-01-01 00:00:00'
+AND tpep_pickup_datetime < '2021-02-01 00:00:00'
+AND zones_up."Zone" = 'Central Park'
+GROUP BY zones_do."Zone"
+ORDER BY total DESC
+LIMIT 1;
+```
+
+**Upper East Side North**
+
 
 ## Question 6. Most expensive locations
 
